@@ -1,0 +1,119 @@
+
+
+<% layout("/layouts/boilerplate")%>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <h1>Find Your Perfect Stay</h1>
+            <p>Discover amazing places to stay around the world</p>
+            <div class="search-box">
+                <input type="text" placeholder="Search destinations, properties...">
+                <button class="search-btn">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Featured Listings -->
+        <section class="featured-listings">
+            <div class="section-header">
+                <h2>Featured Properties</h2>
+                <p>Hand-picked properties for an unforgettable experience</p>
+            </div>
+            
+            <div class="listings-grid">
+                <% if (listings && listings.length > 0) { %>
+                    <% listings.slice(0, 6).forEach(listing => { %>
+                        <a href="/listings/<%= listing._id %>" class="listing-link">
+                            <div class="listing-card">
+                                <div class="listing-image" style="background-image: url('<%= listing.image || '/images/placeholder.jpg' %>')">
+                                    <div class="price-badge">₹<%= listing.price %>/night</div>
+                                </div>
+                                <div class="listing-info">
+                                    <h3 class="listing-title"><%= listing.title %></h3>
+                                    <p class="listing-price">₹<%= listing.price %> /night</p>
+                                </div>
+                            </div>
+                        </a>
+                    <% }) %>
+                <% } else { %>
+                    <!-- Sample listings when no data is available -->
+                    <div class="listing-card">
+                        <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=400&h=280&fit=crop')">
+                            <div class="price-badge">₹1,200/night</div>
+                        </div>
+                        <div class="listing-info">
+                            <h3 class="listing-title">Modern Loft in Downtown</h3>
+                            <p class="listing-price">₹1,200 /night</p>
+                        </div>
+                    </div>
+                    
+                    <div class="listing-card">
+                        <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1540541338287-41700207dee6?w=400&h=280&fit=crop')">
+                            <div class="price-badge">₹1,000/night</div>
+                        </div>
+                        <div class="listing-info">
+                            <h3 class="listing-title">Mountain Retreat</h3>
+                            <p class="listing-price">₹1,000 /night</p>
+                        </div>
+                    </div>
+                    
+                    <div class="listing-card">
+                        <div class="listing-image" style="background-image: url('https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=280&fit=crop')">
+                            <div class="price-badge">₹2,500/night</div>
+                        </div>
+                        <div class="listing-info">
+                            <h3 class="listing-title">Historic Villa in Tuscany</h3>
+                            <p class="listing-price">₹2,500 /night</p>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories">
+            <div class="section-header">
+                <h2>Explore by Category</h2>
+                <p>Find the perfect type of accommodation for your needs</p>
+            </div>
+            
+            <div class="categories-grid">
+                <a href="/listings?category=apartment" class="category-card">
+                    <div class="category-icon">🏢</div>
+                    <h3 class="category-title">Apartments</h3>
+                    <p>Modern urban living</p>
+                </a>
+                
+                <a href="/listings?category=villa" class="category-card">
+                    <div class="category-icon">🏡</div>
+                    <h3 class="category-title">Villas</h3>
+                    <p>Luxurious private homes</p>
+                </a>
+                
+                <a href="/listings?category=resort" class="category-card">
+                    <div class="category-icon">🏖️</div>
+                    <h3 class="category-title">Resorts</h3>
+                    <p>All-inclusive experiences</p>
+                </a>
+                
+                <a href="/listings?category=cabin" class="category-card">
+                    <div class="category-icon">🏔️</div>
+                    <h3 class="category-title">Cabins</h3>
+                    <p>Mountain retreats</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Ready to List Your Property?</h2>
+            <p>Join thousands of hosts earning extra income by sharing their space</p>
+            <a href="/add-listing" class="btn">Add Your Listing</a>
+        </section>
+    </div>
+
+  
+</body>
+</html>
